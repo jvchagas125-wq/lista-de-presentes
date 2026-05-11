@@ -185,9 +185,9 @@
   <div class="modal-box">
     <div class="modal-emoji">🎁</div>
     <h3 id="modalGiftName"></h3>
-    <div class="modal-link-box" id="modalLinkBox">
+    <div id="modalLinkBox" class="modal-link-box" style="flex-direction:column;align-items:flex-start;gap:8px;">
       <span class="modal-link-label">🔗 Aqui está o link do presente</span>
-      <a id="modalGiftLink" href="#" target="_blank" class="btn-link-gift">Ver presente 🛍️</a>
+      <div id="modalLinkButtons" style="display:flex;flex-wrap:wrap;gap:8px;width:100%;"></div>
     </div>
     <p>Para reservar, informe seu nome abaixo:</p>
     <input type="text" id="reserverName" placeholder="Seu nome completo" maxlength="60" />
@@ -272,10 +272,14 @@
     currentGiftId = id;
     document.getElementById('modalGiftName').textContent = g.emoji + ' ' + g.name;
 
-    // Mostra ou esconde o bloco de link conforme o presente tiver link ou não
+    // Suporte a links[] e link (legado)
+    const links = Array.isArray(g.links) && g.links.length ? g.links : (g.link ? [g.link] : []);
     const linkBox = document.getElementById('modalLinkBox');
-    if (g.link && g.link.trim() !== '') {
-      document.getElementById('modalGiftLink').href = g.link;
+    const linkBtns = document.getElementById('modalLinkButtons');
+    if (links.length > 0) {
+      linkBtns.innerHTML = links.map((l, i) =>
+        `<a href="${l}" target="_blank" class="btn-link-gift">Ver opção ${links.length > 1 ? i+1 : ''} 🛍️</a>`
+      ).join('');
       linkBox.style.display = 'flex';
     } else {
       linkBox.style.display = 'none';
