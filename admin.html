@@ -14,12 +14,12 @@
       --red:#e57373; --red-dark:#c62828;
       --gray-100:#f8f6fb; --gray-200:#ede8f5; --gray-300:#d4c8e8;
       --gray-500:#8c7aab; --gray-700:#4a3a6a; --gray-900:#1e1530;
-      --white:#ffffff; --sidebar-w:260px;
+      --sidebar-w:260px;
     }
     *{margin:0;padding:0;box-sizing:border-box;}
     body{font-family:'Inter',sans-serif;background:var(--gray-100);color:var(--gray-700);min-height:100vh;}
 
-    /* LOGIN */
+    /* ── LOGIN ── */
     #login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#2d1b4e,#5a3280,#7b4fa6);position:relative;overflow:hidden;}
     #login-screen::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(200,168,233,.2) 0%,transparent 60%),radial-gradient(ellipse at 70% 20%,rgba(212,168,83,.1) 0%,transparent 50%);}
     .login-box{position:relative;z-index:1;background:rgba(255,255,255,.97);border-radius:24px;padding:48px 40px;width:100%;max-width:400px;box-shadow:0 40px 80px rgba(0,0,0,.35);}
@@ -32,10 +32,10 @@
     .form-group input{width:100%;padding:12px 16px;border:1.5px solid var(--gray-300);border-radius:10px;font-family:'Inter',sans-serif;font-size:.95rem;color:var(--gray-900);outline:none;transition:border-color .2s;}
     .form-group input:focus{border-color:var(--purple);}
     .login-error{background:#fff0f0;color:var(--red-dark);border:1px solid #fca5a5;border-radius:8px;padding:10px 14px;font-size:.85rem;margin-bottom:16px;display:none;}
-    .btn-login{width:100%;padding:14px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;border:none;border-radius:12px;font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:all .3s;letter-spacing:.02em;}
+    .btn-login{width:100%;padding:14px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;border:none;border-radius:12px;font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:all .3s;}
     .btn-login:hover{box-shadow:0 6px 20px rgba(90,50,128,.4);transform:translateY(-1px);}
 
-    /* PAINEL */
+    /* ── PAINEL ── */
     #admin-panel{display:none;min-height:100vh;}
     .sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-w);background:linear-gradient(180deg,var(--purple-dark),#3d1f70);display:flex;flex-direction:column;z-index:50;box-shadow:4px 0 20px rgba(0,0,0,.2);}
     .sidebar-brand{padding:28px 24px 20px;border-bottom:1px solid rgba(255,255,255,.1);}
@@ -51,7 +51,7 @@
     .sidebar-footer{padding:16px 20px;border-top:1px solid rgba(255,255,255,.1);}
     .btn-logout{width:100%;padding:10px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15);border-radius:8px;font-size:.85rem;cursor:pointer;transition:all .2s;}
     .btn-logout:hover{background:rgba(255,255,255,.15);color:#fff;}
-    .main{margin-left:var(--sidebar-w);padding:0;min-height:100vh;}
+    .main{margin-left:var(--sidebar-w);min-height:100vh;}
     .topbar{background:#fff;border-bottom:1px solid var(--gray-200);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:40;box-shadow:0 1px 4px rgba(0,0,0,.06);}
     .topbar h1{font-size:1.15rem;font-weight:600;color:var(--gray-900);}
     .topbar-meta{font-size:.8rem;color:var(--gray-500);}
@@ -65,7 +65,7 @@
     .stat-card.blush::before{background:linear-gradient(90deg,var(--blush),#f48fb1);}
     .stat-num{font-size:2rem;font-weight:700;color:var(--gray-900);line-height:1;margin-bottom:4px;}
     .stat-label{font-size:.78rem;color:var(--gray-500);font-weight:500;text-transform:uppercase;letter-spacing:.04em;}
-    .section{display:none;} .section.active{display:block;}
+    .section{display:none;}.section.active{display:block;}
     .card{background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.06);border:1px solid var(--gray-200);overflow:hidden;}
     .card-header{padding:20px 24px;border-bottom:1px solid var(--gray-200);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
     .card-header h2{font-size:1rem;font-weight:600;color:var(--gray-900);}
@@ -75,8 +75,8 @@
     td{padding:12px 16px;border-bottom:1px solid var(--gray-200);font-size:.87rem;vertical-align:middle;}
     tr:last-child td{border-bottom:none;}
     tr:hover td{background:var(--gray-100);}
-    .gift-thumb{width:44px;height:44px;border-radius:8px;background:var(--purple-light);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;overflow:hidden;}
-    .gift-thumb img{width:44px;height:44px;object-fit:cover;}
+    .gift-thumb{width:48px;height:48px;border-radius:8px;background:var(--purple-light);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;overflow:hidden;}
+    .gift-thumb img{width:48px;height:48px;object-fit:cover;}
     .gift-info{display:flex;align-items:center;gap:12px;}
     .gift-info-text .name{font-weight:600;color:var(--gray-900);margin-bottom:2px;}
     .gift-info-text .desc{font-size:.76rem;color:var(--gray-500);}
@@ -91,26 +91,24 @@
     .btn-delete:hover{background:#ffd5d5;}
     .btn-cancel-res{background:#fff3e0;color:#bf360c;}
     .btn-cancel-res:hover{background:#ffe0b2;}
+
+    /* ── MODAL ── */
     .modal-overlay{display:none;position:fixed;inset:0;background:rgba(30,21,48,.65);z-index:200;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
     .modal-overlay.active{display:flex;}
-    .modal-panel{background:#fff;border-radius:20px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;box-shadow:0 40px 80px rgba(0,0,0,.3);animation:panel-in .35s cubic-bezier(.34,1.56,.64,1);}
+    .modal-panel{background:#fff;border-radius:20px;width:100%;max-width:580px;max-height:92vh;overflow-y:auto;box-shadow:0 40px 80px rgba(0,0,0,.3);animation:panel-in .35s cubic-bezier(.34,1.56,.64,1);}
     @keyframes panel-in{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
     .modal-header{padding:24px 28px 0;display:flex;align-items:center;justify-content:space-between;}
     .modal-header h3{font-size:1.1rem;font-weight:700;color:var(--gray-900);}
     .btn-close{background:var(--gray-200);border:none;border-radius:8px;width:32px;height:32px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background .2s;}
     .btn-close:hover{background:var(--gray-300);}
-    .modal-body{padding:20px 28px 28px;}
+    .modal-body{padding:20px 28px 10px;}
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
     .form-field{margin-bottom:16px;}
     .form-field label{display:block;font-size:.78rem;font-weight:600;color:var(--gray-700);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em;}
     .form-field input,.form-field textarea{width:100%;padding:10px 14px;border:1.5px solid var(--gray-300);border-radius:10px;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--gray-900);outline:none;transition:border-color .2s;}
     .form-field input:focus,.form-field textarea:focus{border-color:var(--purple);}
     .form-field textarea{resize:vertical;min-height:72px;}
-    .img-preview-row{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
-    .img-preview-box{width:80px;height:80px;border-radius:12px;background:var(--purple-light);display:flex;align-items:center;justify-content:center;font-size:2.5rem;overflow:hidden;flex-shrink:0;border:1.5px solid var(--gray-300);}
-    .img-preview-box img{width:100%;height:100%;object-fit:cover;}
-    .img-preview-info p{font-size:.8rem;color:var(--gray-500);line-height:1.5;}
-    .modal-footer{padding:0 28px 24px;display:flex;gap:10px;justify-content:flex-end;}
+    .modal-footer{padding:16px 28px 24px;display:flex;gap:10px;justify-content:flex-end;border-top:1px solid var(--gray-200);margin-top:8px;}
     .btn-primary{padding:11px 24px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;border:none;border-radius:10px;font-weight:600;font-size:.9rem;cursor:pointer;transition:all .3s;}
     .btn-primary:hover{box-shadow:0 4px 14px rgba(90,50,128,.4);}
     .btn-primary:disabled{opacity:.6;cursor:not-allowed;}
@@ -118,6 +116,33 @@
     .btn-secondary:hover{border-color:var(--gray-500);}
     .btn-add{padding:10px 20px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;border:none;border-radius:10px;font-size:.88rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .3s;}
     .btn-add:hover{box-shadow:0 4px 14px rgba(90,50,128,.4);}
+
+    /* ── UPLOAD DE FOTO ── */
+    .img-section{background:var(--gray-100);border-radius:14px;padding:18px;margin-bottom:16px;border:1.5px solid var(--gray-200);}
+    .img-section-title{font-size:.78rem;font-weight:700;color:var(--gray-700);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+    .img-ideal-size{display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,var(--purple-light),#e0d0f5);border:1px solid rgba(123,79,166,.2);color:var(--purple-dark);font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:20px;margin-left:auto;}
+    .img-upload-area{position:relative;}
+    .img-preview-big{width:100%;height:180px;border-radius:12px;object-fit:cover;display:block;margin-bottom:10px;border:2px solid var(--gray-300);}
+    .img-placeholder-big{width:100%;height:180px;border-radius:12px;background:linear-gradient(135deg,var(--purple-light),#e8dcf5);border:2px dashed var(--gray-300);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;margin-bottom:10px;cursor:pointer;transition:all .2s;}
+    .img-placeholder-big:hover{border-color:var(--purple);background:linear-gradient(135deg,#e0d0f5,#d8c6ee);}
+    .img-placeholder-big .ph-emoji{font-size:2.5rem;}
+    .img-placeholder-big .ph-text{font-size:.85rem;color:var(--gray-500);font-weight:500;}
+    .img-placeholder-big .ph-sub{font-size:.75rem;color:var(--gray-500);}
+    .img-actions{display:flex;gap:8px;flex-wrap:wrap;}
+    .btn-upload{flex:1;padding:10px 14px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;border:none;border-radius:10px;font-size:.85rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .3s;min-width:130px;}
+    .btn-upload:hover{box-shadow:0 4px 14px rgba(90,50,128,.3);}
+    .btn-upload:disabled{opacity:.6;cursor:not-allowed;}
+    .btn-remove-img{padding:10px 14px;background:#ffeaea;color:var(--red-dark);border:none;border-radius:10px;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:5px;}
+    .btn-remove-img:hover{background:#ffd5d5;}
+    .upload-progress{height:4px;background:var(--gray-200);border-radius:4px;margin-top:8px;overflow:hidden;display:none;}
+    .upload-progress-bar{height:100%;background:linear-gradient(90deg,var(--purple),var(--blush));border-radius:4px;width:0%;transition:width .3s ease;}
+    .upload-status{font-size:.78rem;margin-top:6px;display:none;font-weight:500;}
+    .upload-status.uploading{color:var(--purple);}
+    .upload-status.done{color:var(--green-dark);}
+    .upload-status.error{color:var(--red-dark);}
+    #fileInput{display:none;}
+
+    /* Reservas */
     .reserver-row{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--gray-200);}
     .reserver-row:last-child{border-bottom:none;}
     .reserver-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--purple),#b08fd4);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0;}
@@ -128,23 +153,26 @@
     .empty-state{padding:48px 24px;text-align:center;}
     .empty-state .empty-icon{font-size:3rem;display:block;margin-bottom:12px;opacity:.4;}
     .empty-state p{color:var(--gray-500);font-size:.9rem;}
+
+    /* Confirm modals */
     .confirm-modal{max-width:380px;}
     .confirm-modal .modal-body{text-align:center;padding-top:24px;}
     .confirm-modal .c-icon{font-size:2.5rem;margin-bottom:12px;}
     .confirm-modal h3{font-size:1.05rem;margin-bottom:8px;color:var(--gray-900);}
     .confirm-modal p{font-size:.88rem;color:var(--gray-500);line-height:1.5;}
+
     .live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;margin-right:6px;animation:pulse-dot 2s ease-in-out infinite;}
     @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-    .toast{position:fixed;bottom:28px;right:28px;background:var(--gray-900);color:#fff;padding:12px 20px;border-radius:10px;font-size:.88rem;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,.25);z-index:999;transform:translateY(20px);opacity:0;transition:all .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none;}
+
+    .toast{position:fixed;bottom:28px;right:28px;color:#fff;padding:12px 20px;border-radius:10px;font-size:.88rem;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,.25);z-index:999;transform:translateY(20px);opacity:0;transition:all .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none;}
     .toast.show{transform:translateY(0);opacity:1;}
     .toast.success{background:linear-gradient(135deg,var(--green),var(--green-dark));}
     .toast.error{background:linear-gradient(135deg,var(--red),var(--red-dark));}
     .toast.info{background:linear-gradient(135deg,var(--purple),var(--purple-dark));}
+
     @media(max-width:768px){
-      .sidebar{transform:translateX(-100%);transition:transform .3s;}
-      .main{margin-left:0;}
-      .topbar{padding:14px 16px;}
-      .content{padding:16px;}
+      .sidebar{transform:translateX(-100%);} .main{margin-left:0;}
+      .topbar,.content{padding:14px 16px;}
       .form-row{grid-template-columns:1fr;}
     }
   </style>
@@ -194,6 +222,7 @@
     </header>
     <div class="content">
       <div class="stats-row" id="statsRow"></div>
+
       <!-- Presentes -->
       <div class="section active" id="section-presentes">
         <div class="card">
@@ -202,15 +231,21 @@
             <button class="btn-add" id="btnAddGift">+ Adicionar presente</button>
           </div>
           <div class="card-body">
-            <table><thead><tr><th>Presente</th><th>Preço</th><th>Link</th><th>Status</th><th>Ações</th></tr></thead>
-            <tbody id="giftsTableBody"><tr><td colspan="5" style="text-align:center;padding:40px;color:var(--gray-500)">Carregando...</td></tr></tbody></table>
+            <table>
+              <thead><tr><th>Presente</th><th>Preço</th><th>Link</th><th>Status</th><th>Ações</th></tr></thead>
+              <tbody id="giftsTableBody"><tr><td colspan="5" style="text-align:center;padding:40px;color:var(--gray-500)">Carregando...</td></tr></tbody>
+            </table>
           </div>
         </div>
       </div>
+
       <!-- Reservas -->
       <div class="section" id="section-reservas">
         <div class="card">
-          <div class="card-header"><h2>Pessoas que Reservaram</h2><span style="font-size:.82rem;color:var(--gray-500)" id="reservasCount"></span></div>
+          <div class="card-header">
+            <h2>Pessoas que Reservaram</h2>
+            <span style="font-size:.82rem;color:var(--gray-500)" id="reservasCount"></span>
+          </div>
           <div class="card-body" id="reservasBody"></div>
         </div>
       </div>
@@ -227,20 +262,68 @@
     </div>
     <div class="modal-body">
       <input type="hidden" id="editGiftId"/>
-      <div class="img-preview-row">
-        <div class="img-preview-box" id="imgPreviewBox"><span id="imgPreviewEmoji">🎁</span></div>
-        <div class="img-preview-info"><p><strong>Foto do presente</strong><br>Cole a URL de uma imagem ou deixe vazio para usar o emoji.</p></div>
+
+      <!-- SEÇÃO DE FOTO -->
+      <div class="img-section">
+        <div class="img-section-title">
+          🖼️ Foto do presente
+          <span class="img-ideal-size">📐 Tamanho ideal: 800 × 600 px (4:3) • máx 5MB • JPG ou PNG</span>
+        </div>
+        <div class="img-upload-area">
+          <img id="imgPreviewBig" class="img-preview-big" src="" alt="" style="display:none"/>
+          <div class="img-placeholder-big" id="imgPlaceholder" onclick="document.getElementById('fileInput').click()">
+            <span class="ph-emoji">📷</span>
+            <span class="ph-text">Clique para fazer upload</span>
+            <span class="ph-sub">ou arraste uma imagem aqui</span>
+          </div>
+          <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp"/>
+          <div class="img-actions">
+            <button class="btn-upload" id="btnUpload" onclick="document.getElementById('fileInput').click()">
+              📤 Escolher foto
+            </button>
+            <button class="btn-remove-img" id="btnRemoveImg" style="display:none" onclick="removeImg()">
+              🗑️ Remover foto
+            </button>
+          </div>
+          <div class="upload-progress" id="uploadProgress">
+            <div class="upload-progress-bar" id="uploadProgressBar"></div>
+          </div>
+          <div class="upload-status" id="uploadStatus"></div>
+        </div>
+        <!-- URL manual como fallback -->
+        <div style="margin-top:12px;">
+          <div class="form-field" style="margin-bottom:0">
+            <label style="color:var(--gray-500)">Ou cole a URL da imagem</label>
+            <input type="url" id="editImg" placeholder="https://..." oninput="onImgUrlChange()"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- CAMPOS DO PRESENTE -->
+      <div class="form-row">
+        <div class="form-field">
+          <label>Emoji</label>
+          <input type="text" id="editEmoji" placeholder="🎁" maxlength="4"/>
+        </div>
+        <div class="form-field">
+          <label>Nome do presente *</label>
+          <input type="text" id="editName" placeholder="Ex: Bolsa de Couro"/>
+        </div>
+      </div>
+      <div class="form-field">
+        <label>Descrição</label>
+        <textarea id="editDesc" placeholder="Descreva o presente..."></textarea>
       </div>
       <div class="form-row">
-        <div class="form-field"><label>Emoji</label><input type="text" id="editEmoji" placeholder="🎁" maxlength="4"/></div>
-        <div class="form-field"><label>Nome do presente</label><input type="text" id="editName" placeholder="Ex: Bolsa de Couro"/></div>
+        <div class="form-field">
+          <label>Faixa de preço</label>
+          <input type="text" id="editPrice" placeholder="Ex: R$ 150 – R$ 250"/>
+        </div>
+        <div class="form-field">
+          <label>Link do presente (loja)</label>
+          <input type="url" id="editLink" placeholder="https://www.amazon.com.br/..."/>
+        </div>
       </div>
-      <div class="form-field"><label>Descrição</label><textarea id="editDesc" placeholder="Descreva o presente..."></textarea></div>
-      <div class="form-row">
-        <div class="form-field"><label>Faixa de preço</label><input type="text" id="editPrice" placeholder="Ex: R$ 150 – R$ 250"/></div>
-        <div class="form-field"><label>URL da imagem</label><input type="url" id="editImg" placeholder="https://..."/></div>
-      </div>
-      <div class="form-field"><label>Link do presente (loja)</label><input type="url" id="editLink" placeholder="https://www.amazon.com.br/..."/></div>
     </div>
     <div class="modal-footer">
       <button class="btn-secondary" id="btnCancelEdit">Cancelar</button>
@@ -282,10 +365,13 @@
 <div class="toast" id="toast"></div>
 
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getFirestore, collection, doc, onSnapshot, updateDoc, setDoc, deleteDoc, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  import { initializeApp }    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, collection, doc, onSnapshot, updateDoc, addDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-  const ADMIN_PASS = 'annajulia2025'; // ← altere a senha aqui
+  // ── CONFIG ──
+  const ADMIN_PASS       = 'annajulia2025';       // ← altere a senha aqui
+  const CLOUDINARY_CLOUD = 'dcvhqnr1c';
+  const CLOUDINARY_PRESET= 'lista_de_presentes';
 
   const firebaseConfig = {
     apiKey: "AIzaSyDGzIITOblvM96dfp5mMtNsMD3T5_fp03o",
@@ -296,14 +382,15 @@
     appId: "1:361735224971:web:e0201213a5fddf85d45e8e"
   };
 
-  const app = initializeApp(firebaseConfig);
-  const db  = getFirestore(app);
+  const app      = initializeApp(firebaseConfig);
+  const db       = getFirestore(app);
   const giftsCol = collection(db, 'gifts');
 
-  let giftsCache = [];
-  let editingId  = null;
-  let deletingId = null;
+  let giftsCache  = [];
+  let editingId   = null;
+  let deletingId  = null;
   let cancelingId = null;
+  let currentImgUrl = ''; // URL da imagem atual (Cloudinary ou manual)
 
   // ── AUTH ──
   document.getElementById('loginPass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
@@ -315,22 +402,21 @@
   });
 
   function doLogin() {
-    const pass = document.getElementById('loginPass').value;
-    if (pass === ADMIN_PASS) {
+    if (document.getElementById('loginPass').value === ADMIN_PASS) {
       document.getElementById('login-screen').style.display = 'none';
-      document.getElementById('admin-panel').style.display = 'block';
+      document.getElementById('admin-panel').style.display  = 'block';
       startListener();
     } else {
       document.getElementById('loginError').style.display = 'block';
     }
   }
 
-  // ── REALTIME LISTENER ──
+  // ── REALTIME ──
   function startListener() {
-    onSnapshot(giftsCol, snapshot => {
-      giftsCache = snapshot.docs
+    onSnapshot(giftsCol, snap => {
+      giftsCache = snap.docs
         .map(d => ({ ...d.data(), id: d.id }))
-        .sort((a, b) => Number(a.order ?? a.id) - Number(b.order ?? b.id));
+        .sort((a, b) => Number(a.order ?? 999) - Number(b.order ?? 999));
       renderStats();
       renderGiftsTable();
       renderReservas();
@@ -341,22 +427,21 @@
   window.showSection = function(name) {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    document.getElementById('section-' + name).classList.add('active');
-    document.getElementById('nav-' + name).classList.add('active');
-    const titles = { presentes:'🎁 Gerenciar Presentes', reservas:'📋 Reservas' };
-    document.getElementById('topbar-title').textContent = titles[name];
+    document.getElementById('section-'+name).classList.add('active');
+    document.getElementById('nav-'+name).classList.add('active');
+    document.getElementById('topbar-title').textContent =
+      name === 'presentes' ? '🎁 Gerenciar Presentes' : '📋 Reservas';
   };
 
   // ── STATS ──
   function renderStats() {
-    const total    = giftsCache.length;
-    const reserved = giftsCache.filter(g => g.reserved).length;
-    const available= total - reserved;
-    const pct      = total ? Math.round(reserved/total*100) : 0;
+    const total = giftsCache.length;
+    const res   = giftsCache.filter(g=>g.reserved).length;
+    const pct   = total ? Math.round(res/total*100) : 0;
     document.getElementById('statsRow').innerHTML = `
-      <div class="stat-card purple"><div class="stat-num">${total}</div><div class="stat-label">Total de presentes</div></div>
-      <div class="stat-card green"><div class="stat-num">${reserved}</div><div class="stat-label">Reservados</div></div>
-      <div class="stat-card gold"><div class="stat-num">${available}</div><div class="stat-label">Disponíveis</div></div>
+      <div class="stat-card purple"><div class="stat-num">${total}</div><div class="stat-label">Total</div></div>
+      <div class="stat-card green"><div class="stat-num">${res}</div><div class="stat-label">Reservados</div></div>
+      <div class="stat-card gold"><div class="stat-num">${total-res}</div><div class="stat-label">Disponíveis</div></div>
       <div class="stat-card blush"><div class="stat-num">${pct}%</div><div class="stat-label">Taxa de reserva</div></div>`;
   }
 
@@ -365,60 +450,57 @@
     const tbody = document.getElementById('giftsTableBody');
     tbody.innerHTML = '';
     if (!giftsCache.length) {
-      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:40px;color:var(--gray-500)">Nenhum presente cadastrado.</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:40px;color:var(--gray-500)">Nenhum presente. Clique em "+ Adicionar presente".</td></tr>';
       return;
     }
     giftsCache.forEach(g => {
-      const thumbHtml = g.img
-        ? `<div class="gift-thumb"><img src="${g.img}" alt="" onerror="this.parentElement.innerHTML='${g.emoji}'"></div>`
+      const thumb = g.img
+        ? `<div class="gift-thumb"><img src="${g.img}" onerror="this.parentElement.innerHTML='${g.emoji}'"></div>`
         : `<div class="gift-thumb">${g.emoji}</div>`;
-      const statusBadge = g.reserved
-        ? `<span class="badge reserved">🔒 Reservado</span>`
+      const badge = g.reserved
+        ? `<span class="badge reserved">🔒 Reservado</span><br><span style="font-size:.74rem;color:var(--gray-500)">por ${g.reserver}</span>`
         : `<span class="badge available">✅ Disponível</span>`;
-      const linkCell = g.link
-        ? `<a href="${g.link}" target="_blank" style="color:var(--purple);font-size:.8rem;">Ver link ↗</a>`
-        : '<span style="color:var(--gray-500);font-size:.8rem;">—</span>';
+      const link = g.link
+        ? `<a href="${g.link}" target="_blank" style="color:var(--purple);font-size:.8rem;">Ver ↗</a>`
+        : '—';
       const cancelBtn = g.reserved
-        ? `<button class="btn-sm btn-cancel-res" data-id="${g.id}" data-action="cancelres">↩ Cancelar reserva</button>`
-        : '';
+        ? `<button class="btn-sm btn-cancel-res" data-id="${g.id}" data-action="cancelres">↩ Cancelar reserva</button>` : '';
       const tr = document.createElement('tr');
       tr.innerHTML = `
-        <td><div class="gift-info">${thumbHtml}<div class="gift-info-text"><div class="name">${g.name}</div><div class="desc">${(g.desc||'').slice(0,50)}${(g.desc||'').length>50?'…':''}</div></div></div></td>
+        <td><div class="gift-info">${thumb}<div class="gift-info-text"><div class="name">${g.name}</div><div class="desc">${(g.desc||'').slice(0,45)}${(g.desc||'').length>45?'…':''}</div></div></div></td>
         <td style="white-space:nowrap">${g.price||'—'}</td>
-        <td>${linkCell}</td>
-        <td>${statusBadge}${g.reserved?`<br><span style="font-size:.74rem;color:var(--gray-500);margin-top:3px;display:block">por ${g.reserver}</span>`:''}</td>
+        <td>${link}</td>
+        <td>${badge}</td>
         <td><div class="actions-cell">
-          <button class="btn-sm btn-edit" data-id="${g.id}" data-action="edit">✏️ Editar</button>
+          <button class="btn-sm btn-edit"   data-id="${g.id}" data-action="edit">✏️ Editar</button>
           <button class="btn-sm btn-delete" data-id="${g.id}" data-action="delete">🗑️ Remover</button>
           ${cancelBtn}
         </div></td>`;
       tbody.appendChild(tr);
     });
-
-    // Event delegation
     tbody.onclick = e => {
       const btn = e.target.closest('[data-action]');
       if (!btn) return;
       const { id, action } = btn.dataset;
-      if (action === 'edit')      openEditModal(id);
-      if (action === 'delete')    openDeleteModal(id);
-      if (action === 'cancelres') openCancelRes(id);
+      if (action==='edit')      openEditModal(id);
+      if (action==='delete')    openDeleteModal(id);
+      if (action==='cancelres') openCancelRes(id);
     };
   }
 
   // ── RESERVAS ──
   function renderReservas() {
-    const reserved = giftsCache.filter(g => g.reserved);
-    document.getElementById('reservasCount').textContent = reserved.length + ' pessoa(s) reservaram';
+    const reserved = giftsCache.filter(g=>g.reserved);
+    document.getElementById('reservasCount').textContent = reserved.length + ' reserva(s)';
     const body = document.getElementById('reservasBody');
     if (!reserved.length) {
       body.innerHTML = `<div class="empty-state"><span class="empty-icon">📭</span><p>Nenhum presente foi reservado ainda.</p></div>`;
       return;
     }
     body.innerHTML = reserved.map(g => {
-      const initials = (g.reserver||'?').split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
+      const ini = (g.reserver||'?').split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
       return `<div class="reserver-row">
-        <div class="reserver-avatar">${initials}</div>
+        <div class="reserver-avatar">${ini}</div>
         <div class="reserver-info">
           <div class="r-name">${g.reserver}</div>
           <div class="r-meta">Reservou em: ${g.reservedAt||'—'}</div>
@@ -427,49 +509,179 @@
         <button class="btn-sm btn-cancel-res" data-id="${g.id}" style="margin-left:8px">↩ Cancelar</button>
       </div>`;
     }).join('');
-
     body.onclick = e => {
       const btn = e.target.closest('[data-id]');
       if (btn) openCancelRes(btn.dataset.id);
     };
   }
 
+  // ── CLOUDINARY UPLOAD ──
+  async function uploadToCloudinary(file) {
+    const MAX_SIZE = 5 * 1024 * 1024;
+    if (file.size > MAX_SIZE) { showToast('Imagem muito grande. Máx 5MB.','error'); return null; }
+
+    setUploadState('uploading', 'Enviando imagem...');
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', CLOUDINARY_PRESET);
+    formData.append('folder', 'presentes');
+
+    // Simula progresso
+    let prog = 0;
+    const interval = setInterval(() => {
+      prog = Math.min(prog + 10, 85);
+      document.getElementById('uploadProgressBar').style.width = prog + '%';
+    }, 150);
+
+    try {
+      const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/image/upload`, {
+        method: 'POST', body: formData
+      });
+      clearInterval(interval);
+      if (!res.ok) throw new Error('Upload falhou');
+      const data = await res.json();
+      document.getElementById('uploadProgressBar').style.width = '100%';
+      setUploadState('done', '✅ Foto enviada com sucesso!');
+      setTimeout(() => setUploadState('hidden'), 2500);
+      return data.secure_url;
+    } catch(err) {
+      clearInterval(interval);
+      setUploadState('error', '❌ Erro ao enviar. Tente novamente.');
+      return null;
+    }
+  }
+
+  function setUploadState(state, msg='') {
+    const prog   = document.getElementById('uploadProgress');
+    const status = document.getElementById('uploadStatus');
+    if (state === 'hidden') { prog.style.display='none'; status.style.display='none'; return; }
+    prog.style.display   = state==='uploading' ? 'block' : 'none';
+    status.style.display = msg ? 'block' : 'none';
+    status.textContent   = msg;
+    status.className     = 'upload-status ' + state;
+  }
+
+  function setImgPreview(url) {
+    currentImgUrl = url || '';
+    const previewImg = document.getElementById('imgPreviewBig');
+    const placeholder = document.getElementById('imgPlaceholder');
+    const removeBtn  = document.getElementById('btnRemoveImg');
+    if (url) {
+      previewImg.src = url;
+      previewImg.style.display = 'block';
+      placeholder.style.display = 'none';
+      removeBtn.style.display = 'flex';
+      document.getElementById('editImg').value = url;
+    } else {
+      previewImg.style.display = 'none';
+      placeholder.style.display = 'flex';
+      removeBtn.style.display = 'none';
+      document.getElementById('editImg').value = '';
+    }
+  }
+
+  window.removeImg = function() {
+    setImgPreview('');
+    document.getElementById('fileInput').value = '';
+    setUploadState('hidden');
+    document.getElementById('uploadProgressBar').style.width = '0%';
+  };
+
+  window.onImgUrlChange = function() {
+    const url = document.getElementById('editImg').value.trim();
+    currentImgUrl = url;
+    const previewImg  = document.getElementById('imgPreviewBig');
+    const placeholder = document.getElementById('imgPlaceholder');
+    const removeBtn   = document.getElementById('btnRemoveImg');
+    if (url) {
+      previewImg.src = url;
+      previewImg.style.display = 'block';
+      placeholder.style.display = 'none';
+      removeBtn.style.display = 'flex';
+    } else {
+      previewImg.style.display = 'none';
+      placeholder.style.display = 'flex';
+      removeBtn.style.display = 'none';
+    }
+  };
+
+  // File input change → faz upload automático
+  document.getElementById('fileInput').addEventListener('change', async e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    // Preview local imediato
+    const reader = new FileReader();
+    reader.onload = ev => {
+      const previewImg  = document.getElementById('imgPreviewBig');
+      const placeholder = document.getElementById('imgPlaceholder');
+      previewImg.src = ev.target.result;
+      previewImg.style.display = 'block';
+      placeholder.style.display = 'none';
+      document.getElementById('btnRemoveImg').style.display = 'flex';
+    };
+    reader.readAsDataURL(file);
+    // Upload pro Cloudinary
+    document.getElementById('btnUpload').disabled = true;
+    const url = await uploadToCloudinary(file);
+    document.getElementById('btnUpload').disabled = false;
+    if (url) {
+      currentImgUrl = url;
+      document.getElementById('editImg').value = url;
+    }
+  });
+
+  // Drag & drop na área de placeholder
+  const placeholder = document.getElementById('imgPlaceholder');
+  placeholder.addEventListener('dragover', e => { e.preventDefault(); placeholder.style.borderColor='var(--purple)'; });
+  placeholder.addEventListener('dragleave', () => { placeholder.style.borderColor=''; });
+  placeholder.addEventListener('drop', async e => {
+    e.preventDefault();
+    placeholder.style.borderColor = '';
+    const file = e.dataTransfer.files[0];
+    if (!file || !file.type.startsWith('image/')) return;
+    document.getElementById('fileInput').files = e.dataTransfer.files;
+    document.getElementById('fileInput').dispatchEvent(new Event('change'));
+  });
+
   // ── EDIT MODAL ──
   document.getElementById('btnAddGift').addEventListener('click', () => {
     editingId = null;
     document.getElementById('editModalTitle').textContent = '+ Adicionar Presente';
-    ['editGiftId','editEmoji','editName','editDesc','editPrice','editImg','editLink'].forEach(id => document.getElementById(id).value = '');
-    document.getElementById('editEmoji').value = '🎁';
-    updatePreview();
+    document.getElementById('editGiftId').value = '';
+    document.getElementById('editEmoji').value  = '🎁';
+    document.getElementById('editName').value   = '';
+    document.getElementById('editDesc').value   = '';
+    document.getElementById('editPrice').value  = '';
+    document.getElementById('editLink').value   = '';
+    setImgPreview('');
+    setUploadState('hidden');
+    document.getElementById('uploadProgressBar').style.width = '0%';
+    document.getElementById('fileInput').value = '';
     document.getElementById('editModal').classList.add('active');
   });
 
-  document.getElementById('btnCloseEdit').addEventListener('click', () => document.getElementById('editModal').classList.remove('active'));
-  document.getElementById('btnCancelEdit').addEventListener('click', () => document.getElementById('editModal').classList.remove('active'));
-
-  document.getElementById('editEmoji').addEventListener('input', updatePreview);
-  document.getElementById('editImg').addEventListener('input', updatePreview);
-
-  function updatePreview() {
-    const emoji = document.getElementById('editEmoji').value || '🎁';
-    const img   = document.getElementById('editImg').value.trim();
-    const box   = document.getElementById('imgPreviewBox');
-    box.innerHTML = img ? `<img src="${img}" alt="" onerror="this.parentElement.innerHTML='${emoji}'">` : emoji;
-  }
+  ['btnCloseEdit','btnCancelEdit'].forEach(id =>
+    document.getElementById(id).addEventListener('click', () =>
+      document.getElementById('editModal').classList.remove('active')
+    )
+  );
 
   function openEditModal(id) {
     const g = giftsCache.find(x => x.id === id);
     if (!g) return;
     editingId = id;
     document.getElementById('editModalTitle').textContent = '✏️ Editar Presente';
-    document.getElementById('editGiftId').value  = id;
-    document.getElementById('editEmoji').value   = g.emoji  || '🎁';
-    document.getElementById('editName').value    = g.name   || '';
-    document.getElementById('editDesc').value    = g.desc   || '';
-    document.getElementById('editPrice').value   = g.price  || '';
-    document.getElementById('editImg').value     = g.img    || '';
-    document.getElementById('editLink').value    = g.link   || '';
-    updatePreview();
+    document.getElementById('editGiftId').value = id;
+    document.getElementById('editEmoji').value  = g.emoji || '🎁';
+    document.getElementById('editName').value   = g.name  || '';
+    document.getElementById('editDesc').value   = g.desc  || '';
+    document.getElementById('editPrice').value  = g.price || '';
+    document.getElementById('editLink').value   = g.link  || '';
+    setImgPreview(g.img || '');
+    setUploadState('hidden');
+    document.getElementById('uploadProgressBar').style.width = '0%';
+    document.getElementById('fileInput').value = '';
     document.getElementById('editModal').classList.add('active');
   }
 
@@ -479,8 +691,8 @@
     const emoji = document.getElementById('editEmoji').value.trim() || '🎁';
     const desc  = document.getElementById('editDesc').value.trim();
     const price = document.getElementById('editPrice').value.trim();
-    const img   = document.getElementById('editImg').value.trim();
     const link  = document.getElementById('editLink').value.trim();
+    const img   = currentImgUrl || document.getElementById('editImg').value.trim();
     if (!name) { showToast('Informe o nome do presente.','error'); return; }
 
     const btn = document.getElementById('btnSaveGift');
@@ -490,12 +702,13 @@
         await updateDoc(doc(db,'gifts',editingId), { emoji, name, desc, price, img, link });
         showToast('Presente atualizado! ✏️','success');
       } else {
-        const order = giftsCache.length ? Math.max(...giftsCache.map(g=>Number(g.order||0))) + 1 : 1;
+        const order = giftsCache.length ? Math.max(...giftsCache.map(g=>Number(g.order||0)))+1 : 1;
         await addDoc(giftsCol, { emoji, name, desc, price, img, link, reserved:false, reserver:'', reservedAt:'', order });
         showToast('Presente adicionado! 🎁','success');
       }
       document.getElementById('editModal').classList.remove('active');
     } catch(e) {
+      console.error(e);
       showToast('Erro ao salvar. Tente novamente.','error');
     }
     btn.disabled = false; btn.textContent = '💾 Salvar presente';
@@ -517,7 +730,7 @@
   });
 
   function openDeleteModal(id) {
-    const g = giftsCache.find(x => x.id === id);
+    const g = giftsCache.find(x=>x.id===id);
     if (!g) return;
     deletingId = id;
     document.getElementById('deleteModalText').textContent = `Deseja remover "${g.name}"? Esta ação não pode ser desfeita.`;
@@ -533,31 +746,36 @@
     try {
       await updateDoc(doc(db,'gifts',cancelingId), { reserved:false, reserver:'', reservedAt:'' });
       document.getElementById('cancelResModal').classList.remove('active');
-      showToast('Reserva cancelada. Presente disponível novamente.','info');
-    } catch(e) { showToast('Erro ao cancelar reserva.','error'); }
+      showToast('Reserva cancelada! Presente disponível novamente.','success');
+    } catch(e) {
+      console.error(e);
+      showToast('Erro ao cancelar reserva.','error');
+    }
     btn.disabled = false; btn.textContent = 'Sim, cancelar reserva';
     cancelingId = null;
   });
 
   function openCancelRes(id) {
-    const g = giftsCache.find(x => x.id === id);
+    const g = giftsCache.find(x=>x.id===id);
     if (!g) return;
     cancelingId = id;
-    document.getElementById('cancelResText').textContent = `Cancelar a reserva de "${g.name}" feita por ${g.reserver}? O presente voltará a ficar disponível para reserva.`;
+    document.getElementById('cancelResText').textContent =
+      `Cancelar a reserva de "${g.name}" feita por ${g.reserver}? O presente voltará a ficar disponível.`;
     document.getElementById('cancelResModal').classList.add('active');
   }
 
   // Fechar modais clicando fora
   ['editModal','deleteModal','cancelResModal'].forEach(id => {
     document.getElementById(id).addEventListener('click', e => {
-      if (e.target === document.getElementById(id)) document.getElementById(id).classList.remove('active');
+      if (e.target === document.getElementById(id))
+        document.getElementById(id).classList.remove('active');
     });
   });
 
   // ── TOAST ──
   function showToast(msg, type='success') {
     const t = document.getElementById('toast');
-    t.textContent = msg; t.className = 'toast ' + type;
+    t.textContent = msg; t.className = 'toast '+type;
     t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 3200);
   }
