@@ -208,6 +208,7 @@
       <div class="nav-label">Menu</div>
       <div class="nav-item active" id="nav-presentes" onclick="showSection('presentes')"><span class="icon">🎁</span> Presentes</div>
       <div class="nav-item" id="nav-reservas" onclick="showSection('reservas')"><span class="icon">📋</span> Reservas</div>
+      <div class="nav-item" id="nav-config" onclick="showSection('config')"><span class="icon">⚙️</span> Configurações</div>
     </nav>
     <div class="sidebar-footer">
       <a href="index.html" target="_blank" style="display:block;text-align:center;color:rgba(255,255,255,.5);font-size:.78rem;text-decoration:none;margin-bottom:10px;">↗ Ver site da lista</a>
@@ -247,6 +248,34 @@
             <span style="font-size:.82rem;color:var(--gray-500)" id="reservasCount"></span>
           </div>
           <div class="card-body" id="reservasBody"></div>
+        </div>
+      </div>
+
+      <!-- Configurações -->
+      <div class="section" id="section-config">
+        <div class="card">
+          <div class="card-header">
+            <h2>⚙️ Configurações do Site</h2>
+          </div>
+          <div class="card-body" style="padding:28px;">
+            <div class="form-field">
+              <label>📝 Texto do rodapé da lista de presentes</label>
+              <p style="font-size:.78rem;color:var(--gray-500);margin-bottom:10px;line-height:1.5;">
+                Este texto aparece na caixa roxa abaixo da lista de presentes. Use <code style="background:var(--gray-200);padding:1px 5px;border-radius:4px;">\n</code> para quebrar linhas.
+              </p>
+              <textarea id="noteTextInput" style="width:100%;padding:12px 14px;border:1.5px solid var(--gray-300);border-radius:10px;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--gray-900);outline:none;resize:vertical;min-height:120px;transition:border-color .2s;" placeholder="Digite o texto que aparecerá no rodapé..."></textarea>
+            </div>
+
+            <!-- Preview -->
+            <div style="margin-top:4px;margin-bottom:24px;">
+              <p style="font-size:.78rem;font-weight:600;color:var(--gray-700);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Preview</p>
+              <div style="background:linear-gradient(135deg,rgba(200,168,233,.15),rgba(250,240,255,.6));border:1.5px solid rgba(176,143,212,.35);border-radius:16px;padding:20px 24px;text-align:center;">
+                <p id="notePreview" style="font-size:.95rem;color:#6b4f7a;line-height:1.7;"></p>
+              </div>
+            </div>
+
+            <button class="btn-primary" id="btnSaveNote" style="min-width:180px;">💾 Salvar texto</button>
+          </div>
         </div>
       </div>
     </div>
@@ -366,7 +395,7 @@
 
 <script type="module">
   import { initializeApp }    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getFirestore, collection, doc, onSnapshot, updateDoc, addDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  import { getFirestore, collection, doc, onSnapshot, updateDoc, addDoc, deleteDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
   // ── CONFIG ──
   const ADMIN_PASS       = 'annajulia2025';       // ← altere a senha aqui
@@ -384,7 +413,10 @@
 
   const app      = initializeApp(firebaseConfig);
   const db       = getFirestore(app);
-  const giftsCol = collection(db, 'gifts');
+  const giftsCol  = collection(db, 'gifts');
+  const settingsDoc = doc(db, 'settings', 'site');
+
+  const DEFAULT_NOTE = '🌸 Sua reserva fica registrada em tempo real para todos os convidados.\nEm caso de dúvidas, entre em contato com a família da Anna Júlia.\nQualquer presente dado com amor é sempre bem-vindo! 💜';
 
   let giftsCache  = [];
   let editingId   = null;
@@ -421,7 +453,38 @@
       renderGiftsTable();
       renderReservas();
     });
+
+    // Escuta texto do rodapé
+    onSnapshot(settingsDoc, snap => {
+      const text = snap.exists() ? (snap.data().noteText || DEFAULT_NOTE) : DEFAULT_NOTE;
+      document.getElementById('noteTextInput').value = text;
+      updateNotePreview(text);
+    });
   }
+
+  // Atualiza preview ao digitar
+  document.getElementById('noteTextInput').addEventListener('input', e => {
+    updateNotePreview(e.target.value);
+  });
+
+  function updateNotePreview(text) {
+    document.getElementById('notePreview').innerHTML = text.replace(/\n/g, '<br>');
+  }
+
+  // Salvar texto do rodapé
+  document.getElementById('btnSaveNote').addEventListener('click', async () => {
+    const text = document.getElementById('noteTextInput').value.trim();
+    if (!text) { showToast('O texto não pode ficar vazio.', 'error'); return; }
+    const btn = document.getElementById('btnSaveNote');
+    btn.disabled = true; btn.textContent = 'Salvando...';
+    try {
+      await setDoc(settingsDoc, { noteText: text }, { merge: true });
+      showToast('Texto salvo! O site já foi atualizado. ✅', 'success');
+    } catch(e) {
+      showToast('Erro ao salvar. Tente novamente.', 'error');
+    }
+    btn.disabled = false; btn.textContent = '💾 Salvar texto';
+  });
 
   // ── NAV ──
   window.showSection = function(name) {
@@ -429,8 +492,8 @@
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     document.getElementById('section-'+name).classList.add('active');
     document.getElementById('nav-'+name).classList.add('active');
-    document.getElementById('topbar-title').textContent =
-      name === 'presentes' ? '🎁 Gerenciar Presentes' : '📋 Reservas';
+    const titles = { presentes:'🎁 Gerenciar Presentes', reservas:'📋 Reservas', config:'⚙️ Configurações' };
+    document.getElementById('topbar-title').textContent = titles[name] || '';
   };
 
   // ── STATS ──
