@@ -199,7 +199,7 @@
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getFirestore, collection, doc, onSnapshot, updateDoc, setDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  import { getFirestore, collection, doc, onSnapshot, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyDGzIITOblvM96dfp5mMtNsMD3T5_fp03o",
@@ -214,32 +214,6 @@
   const db  = getFirestore(app);
   const giftsCol = collection(db, 'gifts');
 
-  // Presentes padrão — populados automaticamente se o Firestore estiver vazio
-  const DEFAULT_GIFTS = [
-    {id:'1',  emoji:'👜', name:'Bolsa de Couro',         desc:'Uma bolsa elegante para o dia a dia.',       price:'R$ 150 – R$ 250', link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
-    {id:'2',  emoji:'💄', name:'Kit de Maquiagem',        desc:'Paleta de sombras + batom + blush premium.', price:'R$ 100 – R$ 200', link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
-    {id:'3',  emoji:'🧴', name:'Kit de Skincare',          desc:'Hidratante, sérum e protetor solar facial.', price:'R$ 120 – R$ 180', link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
-    {id:'4',  emoji:'👟', name:'Tênis Casual',             desc:'Tênis confortável e estiloso, número 37.',   price:'R$ 180 – R$ 300', link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
-    {id:'5',  emoji:'📚', name:'Kit de Livros',            desc:'3 bestsellers escolhidos a dedo.',           price:'R$ 80 – R$ 150',  link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
-    {id:'6',  emoji:'🌸', name:'Perfume Floral',           desc:'Fragrância suave e sofisticada, 50ml.',      price:'R$ 150 – R$ 250', link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
-    {id:'7',  emoji:'☕', name:'Cafeteira Elétrica',       desc:'Café fresquinho com elegância todo dia.',    price:'R$ 120 – R$ 200', link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
-    {id:'8',  emoji:'🎧', name:'Fone Bluetooth',           desc:'Fone sem fio com cancelamento de ruído.',    price:'R$ 200 – R$ 350', link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
-    {id:'9',  emoji:'🕯️',name:'Kit de Velas Aromáticas', desc:'Velas artesanais com aromas relaxantes.',    price:'R$ 60 – R$ 120',  link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
-    {id:'10', emoji:'🌿', name:'Planta Decorativa',        desc:'Suculenta ou planta de interior com vaso.',  price:'R$ 50 – R$ 100',  link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
-    {id:'11', emoji:'💅', name:'Gift Card de Spa',         desc:'Um dia de cuidados e relaxamento total.',    price:'R$ 150 – R$ 300', link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
-    {id:'12', emoji:'👗', name:'Voucher de Roupas',        desc:'Vale-presente para comprar onde quiser.',    price:'R$ 100 – R$ 200', link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
-  ];
-
-  // Popula o Firestore na primeira vez
-  async function seedIfEmpty() {
-    const snap = await getDocs(giftsCol);
-    if (snap.empty) {
-      for (const g of DEFAULT_GIFTS) {
-        await setDoc(doc(db, 'gifts', g.id), g);
-      }
-    }
-  }
-
   let giftsCache = [];
   let currentGiftId = null;
 
@@ -248,7 +222,7 @@
     onSnapshot(giftsCol, snapshot => {
       giftsCache = snapshot.docs
         .map(d => ({ ...d.data(), id: d.id }))
-        .sort((a, b) => Number(a.id) - Number(b.id));
+        .sort((a, b) => Number(a.order ?? a.id) - Number(b.order ?? b.id));
       renderGifts(giftsCache);
     });
   }
@@ -351,8 +325,7 @@
   document.getElementById('reserverName').addEventListener('keydown', e => { if(e.key==='Enter') window.confirmReserve(); });
   document.getElementById('modal').addEventListener('click', e => { if(e.target===document.getElementById('modal')) window.closeModal(); });
 
-  // Inicia
-  await seedIfEmpty();
+  // Inicia escuta em tempo real
   startListener();
 </script>
 </body>
