@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aniversário de Anna Júlia 🎂</title>
+  <title>Lista de Presentes 🎁</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Marcellus&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -170,9 +170,7 @@
       </div>
     </div>
     <div class="note-box">
-      <p>🌸 Sua reserva fica registrada em tempo real para todos os convidados.<br>
-      Em caso de dúvidas, entre em contato com a família da <strong>Anna Júlia</strong>.<br>
-      Qualquer presente dado com amor é sempre bem-vindo! 💜</p>
+      <p id="noteBoxText">🌸 Sua reserva fica registrada em tempo real para todos os convidados.<br>Em caso de dúvidas, entre em contato com a família da <strong>Anna Júlia</strong>.<br>Qualquer presente dado com amor é sempre bem-vindo! 💜</p>
     </div>
   </div>
 </section>
@@ -182,7 +180,7 @@
   <div class="modal-box">
     <div class="modal-emoji">🎁</div>
     <h3 id="modalGiftName"></h3>
-    <div class="modal-link-box">
+    <div class="modal-link-box" id="modalLinkBox">
       <span class="modal-link-label">🔗 Aqui está o link do presente</span>
       <a id="modalGiftLink" href="#" target="_blank" class="btn-link-gift">Ver presente 🛍️</a>
     </div>
@@ -212,10 +210,19 @@
 
   const app = initializeApp(firebaseConfig);
   const db  = getFirestore(app);
-  const giftsCol = collection(db, 'gifts');
+  const giftsCol   = collection(db, 'gifts');
+  const settingsDoc = doc(db, 'settings', 'site');
+
+  const DEFAULT_NOTE = '🌸 Sua reserva fica registrada em tempo real para todos os convidados.\nEm caso de dúvidas, entre em contato com a família da Anna Júlia.\nQualquer presente dado com amor é sempre bem-vindo! 💜';
 
   let giftsCache = [];
   let currentGiftId = null;
+
+  // Escuta o texto do rodapé em tempo real
+  onSnapshot(settingsDoc, snap => {
+    const text = snap.exists() ? (snap.data().noteText || DEFAULT_NOTE) : DEFAULT_NOTE;
+    document.getElementById('noteBoxText').innerHTML = text.replace(/\n/g, '<br>');
+  });
 
   // Escuta mudanças em tempo real
   function startListener() {
@@ -259,7 +266,16 @@
     if (!g || g.reserved) return;
     currentGiftId = id;
     document.getElementById('modalGiftName').textContent = g.emoji + ' ' + g.name;
-    document.getElementById('modalGiftLink').href = g.link || '#';
+
+    // Mostra ou esconde o bloco de link conforme o presente tiver link ou não
+    const linkBox = document.getElementById('modalLinkBox');
+    if (g.link && g.link.trim() !== '') {
+      document.getElementById('modalGiftLink').href = g.link;
+      linkBox.style.display = 'flex';
+    } else {
+      linkBox.style.display = 'none';
+    }
+
     const inp = document.getElementById('reserverName');
     inp.value = ''; inp.style.borderColor = ''; inp.placeholder = 'Seu nome completo';
     document.getElementById('btnConfirm').disabled = false;
