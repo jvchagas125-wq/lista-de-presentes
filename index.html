@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aniversário de Anna Júlia 🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Marcellus&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --lavender-light: #e8d5f5; --lavender-mid: #b08fd4;
+      --purple-deep: #7b4fa6; --purple-dark: #5a3280;
+      --blush: #c9848a; --blush-dark: #a8636a;
+      --cream: #fdf6ec; --gold: #d4a853; --gold-light: #f0cc80;
+      --text-dark: #3a2a4a; --text-mid: #6b4f7a;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Nunito',sans-serif; background:var(--lavender-light); min-height:100vh; overflow-x:hidden; }
+
+    /* ── CONVITE ── */
+    #page-invite {
+      min-height:100vh; display:flex; align-items:center; justify-content:center;
+      position:relative; overflow:hidden; padding:40px 20px;
+      background:linear-gradient(145deg,#d8c0f0 0%,#e8d8f8 30%,#c8aee8 60%,#b89ad4 100%);
+    }
+    #page-invite::before { content:''; position:absolute; top:-100px; left:-100px; width:500px; height:500px; background:radial-gradient(circle,rgba(180,130,220,0.4) 0%,transparent 70%); border-radius:50%; }
+    #page-invite::after  { content:''; position:absolute; bottom:-80px; right:-80px; width:400px; height:400px; background:radial-gradient(circle,rgba(200,160,240,0.35) 0%,transparent 70%); border-radius:50%; }
+    .wisteria-tl,.wisteria-tr,.wisteria-bl,.wisteria-br { position:absolute; line-height:1; opacity:0.85; user-select:none; }
+    .wisteria-tl { top:-10px; left:-10px; transform:rotate(-15deg); font-size:6rem; }
+    .wisteria-tr { top:-10px; right:-10px; transform:rotate(15deg) scaleX(-1); font-size:6rem; }
+    .wisteria-bl { bottom:20px; left:10px; transform:rotate(10deg); font-size:5rem; }
+    .wisteria-br { bottom:20px; right:10px; transform:rotate(-10deg) scaleX(-1); font-size:5rem; }
+    .sparkle { position:absolute; width:6px; height:6px; background:var(--gold-light); border-radius:50%; opacity:0; animation:sparkle-a 3s ease-in-out infinite; }
+    @keyframes sparkle-a { 0%,100%{opacity:0;transform:scale(0)} 50%{opacity:.8;transform:scale(1)} }
+    .invite-card {
+      position:relative; z-index:10; background:var(--cream); border-radius:50%/40%;
+      padding:60px 50px 70px; max-width:440px; width:100%; text-align:center;
+      box-shadow:0 0 0 2px rgba(176,143,212,.4),0 0 0 8px rgba(200,168,233,.2),0 30px 80px rgba(90,50,128,.25);
+      animation:float-c 6s ease-in-out infinite;
+    }
+    @keyframes float-c { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    .invite-hearts { font-size:2.5rem; margin-bottom:16px; animation:pulse-h 2s ease-in-out infinite; }
+    @keyframes pulse-h { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+    .invite-headline { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.9rem; font-weight:400; color:var(--purple-deep); letter-spacing:.05em; margin-bottom:24px; }
+    .invite-text { font-size:1.05rem; color:var(--text-dark); line-height:1.75; margin-bottom:36px; }
+    .invite-text strong { font-weight:700; color:var(--purple-deep); }
+    .btn-invite {
+      display:inline-block; background:linear-gradient(135deg,var(--blush),var(--blush-dark)); color:#fff;
+      font-family:'Marcellus',serif; font-size:1.1rem; letter-spacing:.12em; text-transform:uppercase;
+      padding:16px 44px; border-radius:50px; border:none; cursor:pointer; text-decoration:none;
+      box-shadow:0 6px 20px rgba(168,99,106,.4); transition:all .3s ease; position:relative; overflow:hidden;
+    }
+    .btn-invite::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent); transition:left .5s; }
+    .btn-invite:hover::before { left:100%; }
+    .btn-invite:hover { transform:translateY(-3px); }
+    .invite-divider { display:flex; align-items:center; justify-content:center; gap:10px; margin-top:28px; color:var(--lavender-mid); }
+    .invite-divider::before,.invite-divider::after { content:''; display:block; width:60px; height:1px; background:linear-gradient(90deg,transparent,var(--lavender-mid)); }
+    .invite-divider::after { background:linear-gradient(90deg,var(--lavender-mid),transparent); }
+
+    /* ── LISTA ── */
+    #page-gifts { display:none; min-height:100vh; background:linear-gradient(180deg,#ede0f8,#f5edfb 50%,#ece0f6); overflow-x:hidden; }
+    .gifts-header { background:linear-gradient(135deg,var(--purple-dark),var(--purple-deep) 50%,var(--lavender-mid)); padding:60px 20px 80px; text-align:center; position:relative; overflow:hidden; }
+    .gifts-header h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,6vw,3.2rem); font-weight:300; color:#fff; letter-spacing:.08em; margin-bottom:8px; }
+    .gifts-header h1 span { font-style:italic; font-weight:600; color:var(--gold-light); }
+    .gifts-header p { color:rgba(255,255,255,.85); font-size:1rem; margin-top:10px; }
+    .gifts-header-crown { font-size:3rem; margin-bottom:12px; animation:bounce-c 2s ease-in-out infinite; }
+    @keyframes bounce-c { 0%,100%{transform:translateY(0) rotate(-5deg)} 50%{transform:translateY(-6px) rotate(5deg)} }
+    .gifts-wave { position:absolute; bottom:0; left:0; right:0; }
+    .gifts-body { max-width:900px; margin:0 auto; padding:50px 20px 80px; }
+    .section-label { text-align:center; font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-style:italic; color:var(--purple-deep); margin-bottom:30px; }
+    .section-label::after { content:''; display:block; width:60px; height:2px; background:linear-gradient(90deg,transparent,var(--lavender-mid),transparent); margin:10px auto 0; }
+    .gifts-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:20px; margin-bottom:50px; }
+
+    .gift-card { background:#fff; border-radius:20px; padding:24px 20px; border:1.5px solid rgba(200,168,233,.3); box-shadow:0 4px 20px rgba(123,79,166,.1); transition:all .3s ease; position:relative; overflow:hidden; }
+    .gift-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--lavender-mid),var(--blush)); }
+    .gift-card:hover { transform:translateY(-5px); box-shadow:0 12px 40px rgba(123,79,166,.18); }
+    .gift-card.reserved { background:#f9f4ff; }
+    .gift-card.reserved::after { content:'✓ Reservado'; position:absolute; top:14px; right:14px; background:linear-gradient(135deg,var(--gold),#e8b84b); color:#fff; font-size:.7rem; font-weight:700; padding:4px 10px; border-radius:20px; text-transform:uppercase; }
+    .gift-img { width:100%; height:140px; object-fit:cover; border-radius:12px; margin-bottom:12px; display:block; }
+    .gift-img-placeholder { width:100%; height:140px; border-radius:12px; margin-bottom:12px; background:linear-gradient(135deg,var(--lavender-light),rgba(200,168,233,.3)); display:flex; align-items:center; justify-content:center; font-size:3rem; }
+    .gift-name { font-family:'Marcellus',serif; font-size:1.05rem; color:var(--text-dark); margin-bottom:6px; }
+    .gift-desc { font-size:.85rem; color:var(--text-mid); line-height:1.5; margin-bottom:14px; }
+    .gift-price { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:600; color:var(--purple-deep); margin-bottom:14px; }
+    .gift-reserved-by { font-size:.82rem; color:var(--blush-dark); font-style:italic; margin-bottom:10px; }
+    .btn-reserve { width:100%; padding:11px; background:linear-gradient(135deg,var(--lavender-mid),var(--purple-deep)); color:#fff; border:none; border-radius:12px; font-family:'Nunito',sans-serif; font-size:.9rem; font-weight:700; cursor:pointer; transition:all .3s; }
+    .btn-reserve:hover { background:linear-gradient(135deg,var(--purple-deep),var(--purple-dark)); box-shadow:0 4px 14px rgba(90,50,128,.35); }
+    .btn-reserved-label { width:100%; padding:11px; background:#f0e8fa; color:var(--text-mid); border:1.5px solid rgba(176,143,212,.3); border-radius:12px; font-size:.85rem; font-weight:600; text-align:center; }
+
+    .note-box { background:linear-gradient(135deg,rgba(200,168,233,.15),rgba(250,240,255,.6)); border:1.5px solid rgba(176,143,212,.35); border-radius:20px; padding:28px 30px; text-align:center; }
+    .note-box p { font-size:.95rem; color:var(--text-mid); line-height:1.7; }
+    .note-box strong { color:var(--purple-deep); }
+    .btn-back { display:inline-flex; align-items:center; gap:8px; background:transparent; border:1.5px solid var(--lavender-mid); color:var(--purple-deep); font-family:'Nunito',sans-serif; font-size:.9rem; font-weight:600; padding:10px 22px; border-radius:50px; cursor:pointer; transition:all .3s; margin-bottom:40px; }
+    .btn-back:hover { background:var(--lavender-mid); color:#fff; }
+
+    /* Modal */
+    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(60,30,90,.6); z-index:100; align-items:center; justify-content:center; backdrop-filter:blur(4px); padding:20px; }
+    .modal-overlay.active { display:flex; }
+    .modal-box { background:#fff; border-radius:24px; padding:40px 32px; max-width:420px; width:100%; text-align:center; box-shadow:0 30px 80px rgba(90,50,128,.3); animation:modal-in .4s cubic-bezier(.34,1.56,.64,1); }
+    @keyframes modal-in { from{transform:scale(.8);opacity:0} to{transform:scale(1);opacity:1} }
+    .modal-emoji { font-size:3rem; margin-bottom:12px; }
+    .modal-box h3 { font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--purple-deep); margin-bottom:10px; }
+    .modal-box > p { color:var(--text-mid); font-size:.95rem; line-height:1.6; margin-bottom:16px; }
+    .modal-link-box { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; background:linear-gradient(135deg,rgba(200,168,233,.15),rgba(240,220,255,.3)); border:1.5px solid rgba(176,143,212,.4); border-radius:14px; padding:14px 18px; margin-bottom:18px; }
+    .modal-link-label { font-size:.88rem; font-weight:600; color:var(--purple-deep); }
+    .btn-link-gift { display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,var(--purple-deep),var(--purple-dark)); color:#fff; font-size:.85rem; font-weight:700; padding:9px 18px; border-radius:50px; text-decoration:none; white-space:nowrap; transition:all .3s; box-shadow:0 3px 12px rgba(90,50,128,.3); }
+    .btn-link-gift:hover { transform:translateY(-2px); }
+    .modal-box input { width:100%; padding:12px 16px; border:1.5px solid rgba(176,143,212,.5); border-radius:12px; font-family:'Nunito',sans-serif; font-size:1rem; color:var(--text-dark); margin-bottom:16px; outline:none; transition:border-color .2s; }
+    .modal-box input:focus { border-color:var(--purple-deep); }
+    .modal-actions { display:flex; gap:10px; }
+    .btn-confirm { flex:1; padding:13px; background:linear-gradient(135deg,var(--blush),var(--blush-dark)); color:#fff; border:none; border-radius:12px; font-family:'Nunito',sans-serif; font-weight:700; font-size:.95rem; cursor:pointer; transition:all .3s; }
+    .btn-confirm:hover { box-shadow:0 4px 14px rgba(168,99,106,.4); }
+    .btn-cancel { flex:1; padding:13px; background:transparent; color:var(--text-mid); border:1.5px solid rgba(176,143,212,.4); border-radius:12px; font-family:'Nunito',sans-serif; font-weight:600; font-size:.95rem; cursor:pointer; transition:all .3s; }
+    .btn-cancel:hover { border-color:var(--blush); color:var(--blush-dark); }
+
+    .toast { position:fixed; bottom:30px; left:50%; transform:translateX(-50%) translateY(100px); background:linear-gradient(135deg,var(--purple-deep),var(--purple-dark)); color:#fff; padding:14px 28px; border-radius:50px; font-weight:600; font-size:.95rem; box-shadow:0 8px 30px rgba(90,50,128,.4); z-index:200; transition:transform .4s cubic-bezier(.34,1.56,.64,1); }
+    .toast.show { transform:translateX(-50%) translateY(0); }
+
+    @media(max-width:500px){
+      .invite-card{padding:50px 30px 60px;border-radius:45%/35%;}
+      .gifts-grid{grid-template-columns:1fr;}
+      .modal-box{padding:30px 20px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- CONVITE -->
+<section id="page-invite">
+  <div class="sparkle" style="top:15%;left:10%;animation-delay:0s"></div>
+  <div class="sparkle" style="top:25%;left:80%;animation-delay:.7s;width:8px;height:8px"></div>
+  <div class="sparkle" style="top:70%;left:20%;animation-delay:1.4s"></div>
+  <div class="sparkle" style="top:60%;left:85%;animation-delay:2.1s;width:4px;height:4px"></div>
+  <div class="sparkle" style="top:40%;left:5%;animation-delay:1s"></div>
+  <div class="sparkle" style="top:80%;left:60%;animation-delay:.5s;width:10px;height:10px"></div>
+  <div class="wisteria-tl">🌸🌺🌸<br>🌿💐<br>🌸</div>
+  <div class="wisteria-tr">🌸🌺🌸<br>💐🌿<br>🌸</div>
+  <div class="wisteria-bl">🌷🌸🌿<br>🌺🌸</div>
+  <div class="wisteria-br">🌿🌸🌷<br>🌸🌺</div>
+  <div class="invite-card">
+    <div class="invite-hearts">💜💜</div>
+    <div class="invite-headline">Você foi convidado!</div>
+    <p class="invite-text">Parabéns! Você foi convidado para o aniversário de <strong>Anna Júlia</strong>! Caso queira presentear segundo a lista montada por ela, só clicar no botão abaixo.</p>
+    <button class="btn-invite" onclick="goToGifts()">Clique Aqui!</button>
+    <div class="invite-divider">❖</div>
+  </div>
+</section>
+
+<!-- LISTA -->
+<section id="page-gifts">
+  <div class="gifts-header">
+    <div class="gifts-header-crown">👑</div>
+    <h1>Lista de Presentes de<br><span>Anna Júlia</span></h1>
+    <p>Escolha um presente e reserve com seu nome 💜</p>
+    <svg class="gifts-wave" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#ede0f8"/>
+    </svg>
+  </div>
+  <div class="gifts-body">
+    <button class="btn-back" onclick="goToInvite()">← Voltar ao convite</button>
+    <div class="section-label">Escolha um presente especial ✨</div>
+    <div class="gifts-grid" id="giftsGrid"></div>
+    <div class="note-box">
+      <p>🌸 Sua reserva fica registrada na lista.<br>Em caso de dúvidas, entre em contato com a família da <strong>Anna Júlia</strong>.<br>Qualquer presente dado com amor é sempre bem-vindo! 💜</p>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <div class="modal-emoji">🎁</div>
+    <h3 id="modalGiftName"></h3>
+    <div class="modal-link-box">
+      <span class="modal-link-label">🔗 Aqui está o link do presente</span>
+      <a id="modalGiftLink" href="#" target="_blank" class="btn-link-gift">Ver presente 🛍️</a>
+    </div>
+    <p>Para reservar, informe seu nome abaixo:</p>
+    <input type="text" id="reserverName" placeholder="Seu nome completo" maxlength="60" />
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+      <button class="btn-confirm" onclick="confirmReserve()">Reservar 💜</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const STORAGE_KEY = 'annajulia_gifts_v2';
+
+const DEFAULT_GIFTS = [
+  {id:1, emoji:'👜', name:'Bolsa de Couro',         desc:'Uma bolsa elegante para o dia a dia.',       price:'R$ 150 – R$ 250', link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
+  {id:2, emoji:'💄', name:'Kit de Maquiagem',        desc:'Paleta de sombras + batom + blush premium.', price:'R$ 100 – R$ 200', link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
+  {id:3, emoji:'🧴', name:'Kit de Skincare',          desc:'Hidratante, sérum e protetor solar facial.', price:'R$ 120 – R$ 180', link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
+  {id:4, emoji:'👟', name:'Tênis Casual',             desc:'Tênis confortável e estiloso, número 37.',   price:'R$ 180 – R$ 300', link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
+  {id:5, emoji:'📚', name:'Kit de Livros',            desc:'3 bestsellers escolhidos a dedo.',           price:'R$ 80 – R$ 150',  link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
+  {id:6, emoji:'🌸', name:'Perfume Floral',           desc:'Fragrância suave e sofisticada, 50ml.',      price:'R$ 150 – R$ 250', link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
+  {id:7, emoji:'☕', name:'Cafeteira Elétrica',       desc:'Café fresquinho com elegância todo dia.',    price:'R$ 120 – R$ 200', link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
+  {id:8, emoji:'🎧', name:'Fone Bluetooth',           desc:'Fone sem fio com cancelamento de ruído.',    price:'R$ 200 – R$ 350', link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
+  {id:9, emoji:'🕯️',name:'Kit de Velas Aromáticas', desc:'Velas artesanais com aromas relaxantes.',    price:'R$ 60 – R$ 120',  link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
+  {id:10,emoji:'🌿', name:'Planta Decorativa',        desc:'Suculenta ou planta de interior com vaso.',  price:'R$ 50 – R$ 100',  link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
+  {id:11,emoji:'💅', name:'Gift Card de Spa',         desc:'Um dia de cuidados e relaxamento total.',    price:'R$ 150 – R$ 300', link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
+  {id:12,emoji:'👗', name:'Voucher de Roupas',        desc:'Vale-presente para comprar onde quiser.',    price:'R$ 100 – R$ 200', link:'https://www.amazon.com.br', img:'', reserved:false, reserver:'', reservedAt:''},
+];
+
+function loadGifts() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch(e){}
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_GIFTS));
+  return JSON.parse(JSON.stringify(DEFAULT_GIFTS));
+}
+
+function saveGifts(gifts) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(gifts));
+}
+
+let currentGiftId = null;
+
+function renderGifts() {
+  const gifts = loadGifts();
+  const grid = document.getElementById('giftsGrid');
+  grid.innerHTML = '';
+  gifts.forEach(g => {
+    const card = document.createElement('div');
+    card.className = 'gift-card' + (g.reserved ? ' reserved' : '');
+    const imgHtml = g.img
+      ? `<img class="gift-img" src="${g.img}" alt="${g.name}" onerror="this.style.display='none'">`
+      : `<div class="gift-img-placeholder">${g.emoji}</div>`;
+    const bottomHtml = g.reserved
+      ? `<div class="gift-reserved-by">Reservado por: <strong>${g.reserver}</strong></div>
+         <div class="btn-reserved-label">🎀 Presente reservado</div>`
+      : `<button class="btn-reserve" onclick="openModal(${g.id})">🎀 Reservar este presente</button>`;
+    card.innerHTML = `${imgHtml}
+      <div class="gift-name">${g.name}</div>
+      <div class="gift-desc">${g.desc}</div>
+      <div class="gift-price">${g.price}</div>
+      ${bottomHtml}`;
+    grid.appendChild(card);
+  });
+}
+
+function goToGifts() {
+  renderGifts();
+  document.getElementById('page-invite').style.display = 'none';
+  document.getElementById('page-gifts').style.display = 'block';
+  window.scrollTo(0,0);
+}
+function goToInvite() {
+  document.getElementById('page-gifts').style.display = 'none';
+  document.getElementById('page-invite').style.display = 'flex';
+  window.scrollTo(0,0);
+}
+
+function openModal(id) {
+  const gifts = loadGifts();
+  const g = gifts.find(x => x.id === id);
+  if (!g || g.reserved) return;
+  currentGiftId = id;
+  document.getElementById('modalGiftName').textContent = g.emoji + ' ' + g.name;
+  document.getElementById('modalGiftLink').href = g.link || '#';
+  const inp = document.getElementById('reserverName');
+  inp.value = ''; inp.style.borderColor = ''; inp.placeholder = 'Seu nome completo';
+  document.getElementById('modal').classList.add('active');
+  setTimeout(() => inp.focus(), 300);
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('active');
+  currentGiftId = null;
+}
+function confirmReserve() {
+  const name = document.getElementById('reserverName').value.trim();
+  if (!name) {
+    const inp = document.getElementById('reserverName');
+    inp.style.borderColor = '#e57373'; inp.placeholder = 'Por favor, informe seu nome!'; return;
+  }
+  const gifts = loadGifts();
+  const g = gifts.find(x => x.id === currentGiftId);
+  if (!g || g.reserved) { closeModal(); renderGifts(); return; }
+  g.reserved = true; g.reserver = name;
+  g.reservedAt = new Date().toLocaleString('pt-BR');
+  saveGifts(gifts); closeModal(); renderGifts();
+  showToast(`"${g.name}" reservado por ${name}! 💜`);
+}
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = '✅ ' + msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('reserverName').addEventListener('keydown', e => { if(e.key==='Enter') confirmReserve(); });
+  document.getElementById('modal').addEventListener('click', e => { if(e.target===document.getElementById('modal')) closeModal(); });
+});
+</script>
+</body>
+</html>
