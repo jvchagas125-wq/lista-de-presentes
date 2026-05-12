@@ -253,8 +253,7 @@
         ? `<img class="gift-img" src="${g.img}" alt="${g.name}" onerror="this.style.display='none'">`
         : `<div class="gift-img-placeholder">${g.emoji}</div>`;
       const bottomHtml = g.reserved
-        ? `<div class="gift-reserved-by">Reservado por: <strong>${g.reserver}</strong></div>
-           <div class="btn-reserved-label">🎀 Presente reservado</div>`
+        ? `<div class="btn-reserved-label">🎀 Presente reservado</div>`
         : `<button class="btn-reserve" onclick="window._openModal('${g.id}')">🎀 Clique aqui</button>`;
       card.innerHTML = `${imgHtml}
         <div class="gift-name">${g.name}</div>
