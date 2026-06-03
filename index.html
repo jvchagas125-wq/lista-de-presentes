@@ -188,10 +188,6 @@
   <div class="modal-box">
     <div class="modal-emoji">🎁</div>
     <h3 id="modalGiftName"></h3>
-    <div id="modalLinkBox" class="modal-link-box" style="flex-direction:column;align-items:flex-start;gap:8px;">
-      <span class="modal-link-label">🔗 Aqui está o link do presente</span>
-      <div id="modalLinkButtons" style="display:flex;flex-wrap:wrap;gap:8px;width:100%;"></div>
-    </div>
     <p>Para reservar, informe seu nome abaixo:</p>
     <input type="text" id="reserverName" placeholder="Seu nome completo" maxlength="60" />
     <div class="modal-actions">
@@ -260,7 +256,7 @@
       const links = Array.isArray(g.links) && g.links.length ? g.links : (g.link ? [g.link] : []);
       const linksHtml = links.length
         ? `<div class="card-links">${links.map((l, i) =>
-            `<a href="${l}" target="_blank" class="btn-card-link">🛍️ ${links.length > 1 ? 'Ver opção ' + (i+1) : 'Ver presente'}</a>`
+            `<a href="${l}" target="_blank" class="btn-card-link">🛍️ ${links.length > 1 ? 'Link do presente ' + (i+1) : 'Link do presente'}</a>`
           ).join('')}</div>`
         : '';
 
