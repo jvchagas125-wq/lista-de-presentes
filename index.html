@@ -281,19 +281,6 @@
     currentGiftId = id;
     document.getElementById('modalGiftName').textContent = g.emoji + ' ' + g.name;
 
-    // Suporte a links[] e link (legado)
-    const links = Array.isArray(g.links) && g.links.length ? g.links : (g.link ? [g.link] : []);
-    const linkBox = document.getElementById('modalLinkBox');
-    const linkBtns = document.getElementById('modalLinkButtons');
-    if (links.length > 0) {
-      linkBtns.innerHTML = links.map((l, i) =>
-        `<a href="${l}" target="_blank" class="btn-link-gift">Ver opção ${links.length > 1 ? i+1 : ''} 🛍️</a>`
-      ).join('');
-      linkBox.style.display = 'flex';
-    } else {
-      linkBox.style.display = 'none';
-    }
-
     const inp = document.getElementById('reserverName');
     inp.value = ''; inp.style.borderColor = ''; inp.placeholder = 'Seu nome completo';
     document.getElementById('btnConfirm').disabled = false;
